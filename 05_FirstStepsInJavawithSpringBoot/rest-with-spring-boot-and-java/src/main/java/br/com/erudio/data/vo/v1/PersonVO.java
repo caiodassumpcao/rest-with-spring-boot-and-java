@@ -1,4 +1,4 @@
-package br.com.erudio.model;
+package br.com.erudio.data.vo.v1;
 
 import java.io.Serializable;
 import java.util.Objects;
@@ -12,7 +12,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "person")
-public class Person implements Serializable {
+public class PersonVO implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -32,7 +32,7 @@ public class Person implements Serializable {
 	@Column(nullable = false, length = 6)
 	private String gender;
 	
-	public Person() {
+	public PersonVO() {
 		
 	}
 	public long getId() {
@@ -77,7 +77,7 @@ public class Person implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Person other = (Person) obj;
+		PersonVO other = (PersonVO) obj;
 		return Objects.equals(address, other.address) && Objects.equals(firstName, other.firstName)
 				&& Objects.equals(gender, other.gender) && id == other.id && Objects.equals(lastName, other.lastName);
 	}
