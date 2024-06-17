@@ -97,4 +97,3 @@ public class DozerConverterTest {
         assertEquals("Male", outputTwelve.getGender());
     }
 }
-
