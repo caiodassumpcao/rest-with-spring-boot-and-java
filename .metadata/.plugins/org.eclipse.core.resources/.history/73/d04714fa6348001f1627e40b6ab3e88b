@@ -1,0 +1,5 @@
+package br.com.erudio.unittests.mapper.mocks;
+
+public class MockPerson {
+
+}

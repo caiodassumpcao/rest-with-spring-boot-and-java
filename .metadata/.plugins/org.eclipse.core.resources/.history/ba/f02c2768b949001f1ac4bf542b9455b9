@@ -1,0 +1,19 @@
+
+CREATE TABLE IF NOT EXISTS `person` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `address` varchar(100) NOT NULL,
+  `first_name` varchar(80) NOT NULL,
+  `gender` varchar(6) NOT NULL,
+  `last_name` varchar(80) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+INSERT INTO `person` (`id`, `address`, `first_name`, `gender`, `last_name`) VALUES
+	(1, 'Recife, Pernambuco', 'Caio', 'Male', 'Rodrigues'),
+	(2, 'Praia piedade', 'Jack', 'Male', 'Daniel\'s'),
+	(4, 'Porbandar - India', 'Indira', 'Female', 'Gandhi'),
+	(5, 'Porbandar - India', 'Mahatma', 'Male', 'Gandhi'),
+	(9, 'Rio de Janiero, Rio de Janiero', 'Arlindo', 'Male', 'Cruz'),
+	(10, 'Smiljan, Croatia', 'Nikola', 'Male', 'Tesla');
+
