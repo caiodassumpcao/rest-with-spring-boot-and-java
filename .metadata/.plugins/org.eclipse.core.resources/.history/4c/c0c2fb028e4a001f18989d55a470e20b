@@ -1,0 +1,36 @@
+package br.com.erudio.serialization.converter;
+
+import org.springframework.http.converter.AbstractHttpMessageConverter;
+import org.springframework.http.HttpInputMessage;
+import org.springframework.http.HttpOutputMessage;
+import org.springframework.http.MediaType;
+import com.fasterxml.jackson.dataformat.yaml.YAMLMapper;
+
+import java.io.IOException;
+
+public class YamlJackson2HttpMesageConverter extends AbstractHttpMessageConverter<Object> {
+
+    private static final MediaType MEDIA_TYPE = MediaType.valueOf("application/x-yaml");
+
+    private final YAMLMapper yamlMapper;
+
+    public YamlJackson2HttpMesageConverter() {
+        super(MEDIA_TYPE);
+        this.yamlMapper = new YAMLMapper();
+    }
+
+    @Override
+    protected boolean supports(Class<?> clazz) {
+        return true;
+    }
+
+    @Override
+    protected Object readInternal(Class<? extends Object> clazz, HttpInputMessage inputMessage) throws IOException {
+        return yamlMapper.readValue(inputMessage.getBody(), clazz);
+    }
+
+    @Override
+    protected void writeInternal(Object object, HttpOutputMessage outputMessage) throws IOException {
+        outputMessage.getBody().write(yamlMapper.writeValueAsBytes(object));
+    }
+}

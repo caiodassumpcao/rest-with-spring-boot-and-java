@@ -26,8 +26,15 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
-		
-		<dependency>	
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-yaml</artifactId>
+		</dependency>
+		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 			<version>8.0.33</version>
@@ -48,14 +55,6 @@
 		    <artifactId>dozer-core</artifactId>
 		    <version>${dozer.version}</version>
 		</dependency>
-		
-		<!--
-		<dependency>
-		  <groupId>org.modelmapper</groupId>
-		  <artifactId>modelmapper</artifactId>
-		  <version>${model-mapper.version}</version>
-		</dependency>
-		-->
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -77,7 +76,49 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			<plugin>
+			   <groupId>org.flywaydb</groupId>
+			   <artifactId>flyway-maven-plugin</artifactId>
+			   <configuration>
+			      <url>jdbc:mysql://localhost:3306/rest_with_spring_boot_erudio?useTimezone=true&amp;serverTimezone=UTC&amp;useSSL=false</url>
+			      <user>root</user>
+			      <password>root</password>
+			   </configuration>
+			   <dependencies>
+			      <dependency>
+			         <groupId>mysql</groupId>
+			         <artifactId>mysql-connector-java</artifactId>
+			         <version>${mysql.version}</version>
+			         <exclusions>
+			            <exclusion>
+			               <artifactId>slf4j-api</artifactId>
+			               <groupId>org.slf4j</groupId>
+			            </exclusion>
+			         </exclusions>
+			      </dependency>
+			   </dependencies>
+			</plugin>
 		</plugins>
 	</build>
-</project>
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+	<pluginRepositories>
+		<pluginRepository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
 
+</project>
